@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syafiq Finance</title>
+
+<style>
+    :root {
+        --bg: #f4f6f8;
+        --card: rgba(255,255,255,.88);
+        --dark: #111827;
+        --muted: #7b8491;
+        --line: #e7eaf0;
+        --accent: #5b5cf0;
+        --accent2: #8b5cf6;
+        --green: #16a34a;
+        --red: #dc2626;
+        --shadow: 0 18px 45px rgba(17,24,39,.08);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background:
+            radial-gradient(circle at 10% 0%, rgba(91,92,240,.12), transparent 28%),
+            radial-gradient(circle at 90% 10%, rgba(139,92,246,.10), transparent 25%),
+            var(--bg);
+        color: var(--dark);
+        padding: 24px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    /* TOP BAR */
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 22px;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .brand-icon {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        color: white;
+        font-weight: bold;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        box-shadow: 0 10px 22px rgba(91,92,240,.25);
+    }
+
+    .brand h1 {
+        font-size: 20px;
+        letter-spacing: .5px;
+    }
+
+    .brand p {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .status {
+        padding: 9px 13px;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        font-size: 12px;
+        color: #4b5563;
+    }
+
+    .status span {
+        color: var(--green);
+        font-size: 10px;
+        margin-right: 5px;
+    }
+
+    /* HERO */
+    .hero {
+        position: relative;
+        overflow: hidden;
+        color: white;
+        padding: 32px;
+        border-radius: 28px;
+        background:
+            radial-gradient(circle at 90% 10%, rgba(255,255,255,.18), transparent 30%),
+            linear-gradient(135deg, #171b2e, #292d55 58%, #4b3b85);
+        box-shadow: 0 22px 50px rgba(24,29,52,.22);
+        margin-bottom: 20px;
+    }
+
+    .hero:after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 50%;
+        right: -60px;
+        bottom: -80px;
+    }
+
+    .hero-label {
+        font-size: 12px;
+        color: #cbd0e5;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 9px;
+    }
+
+    .hero h2 {
+        font-size: 43px;
+        letter-spacing: -1px;
+        margin-bottom: 8px;
+    }
+
+    .hero-sub {
+        color: #cbd0e5;
+        font-size: 13px;
+    }
+
+    .hero-badge {
+        position: absolute;
+        right: 28px;
+        top: 28px;
+        padding: 8px 12px;
+        border: 1px solid rgba(255,255,255,.15);
+        border-radius: 30px;
+        background: rgba(255,255,255,.08);
+        font-size: 11px;
+    }
+
+    /* QUICK STATS */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .stat {
+        background: var(--card);
+        border: 1px solid rgba(255,255,255,.8);
+        border-radius: 20px;
+        padding: 19px;
+        box-shadow: var(--shadow);
+    }
+
+    .stat-top {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .stat-value {
+        font-size: 21px;
+        font-weight: bold;
+    }
+
+    .stat-icon {
+        font-size: 18px;
+    }
+
+    /* GRID */
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-bottom: 18px;
+    }
+
+    .card {
+        background: var(--card);
+        border: 1px solid rgba(255,255,255,.8);
+        border-radius: 22px;
+        padding: 23px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+    }
+
+    .card-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 17px;
+    }
+
+    .card-title h3 {
+        font-size: 17px;
+    }
+
+    .card-title span {
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    input {
+        width: 100%;
+        padding: 13px 14px;
+        border: 1px solid var(--line);
+        background: #fbfcfd;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        outline: none;
+        font-size: 13px;
+    }
+
+    input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(91,92,240,.09);
+    }
+
+    button {
+        width: 100%;
+        padding: 13px;
+        border: 0;
+        border-radius: 12px;
+        color: white;
+        background: var(--dark);
+        cursor: pointer;
+        font-weight: bold;
+        transition: .2s;
+    }
+
+    button:hover {
+        transform: translateY(-1px);
+        opacity: .94;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    .btn-danger {
+        background: #fff1f2;
+        color: var(--red);
+        margin-top: 12px;
+    }
+
+    /* TARGET */
+    .target-card {
+        margin-bottom: 18px;
+    }
+
+    .target-preview {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        background: #f8f8ff;
+        border: 1px solid #ececff;
+        padding: 14px;
+        border-radius: 15px;
+        margin-top: 7px;
+        margin-bottom: 14px;
+    }
+
+    .target-icon {
+        width: 43px;
+        height: 43px;
+        display: grid;
+        place-items: center;
+        background: white;
+        border-radius: 13px;
+        font-size: 21px;
+    }
+
+    .target-preview strong {
+        display: block;
+        font-size: 14px;
+    }
+
+    .target-preview small {
+        color: var(--muted);
+        display: block;
+        margin-top: 4px;
+    }
+
+    .progress-box {
+        height: 10px;
+        background: #e9eaf2;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 14px 0 8px;
+    }
+
+    #progressBar {
+        height: 100%;
+        width: 0%;
+        border-radius: 20px;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        transition: .35s;
+    }
+
+    #progressText {
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    /* TRANSACTIONS */
+    .transaction-list {
+        list-style: none;
+    }
+
+    .transaction-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .transaction-list li:last-child {
+        border-bottom: 0;
+    }
+
+    .transaction-icon {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: #f1f3f6;
+    }
+
+    .transaction-main {
+        flex: 1;
+    }
+
+    .transaction-main strong {
+        display: block;
+        font-size: 13px;
+    }
+
+    .transaction-main small {
+        color: var(--muted);
+        font-size: 10px;
+    }
+
+    .amount-in {
+        color: var(--green);
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .amount-out {
+        color: var(--red);
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .empty {
+        justify-content: center !important;
+        color: var(--muted);
+        padding: 25px !important;
+        border: 0 !important;
+    }
+
+    footer {
+        text-align: center;
+        color: #9aa1ac;
+        font-size: 11px;
+        padding: 15px 0 5px;
+    }
+
+    @media (max-width: 700px) {
+        body {
+            padding: 14px;
+        }
+
+        .grid,
+        .stats {
+            grid-template-columns: 1fr;
+        }
+
+        .hero {
+            padding: 26px;
+        }
+
+        .hero h2 {
+            font-size: 34px;
+        }
+
+        .hero-badge {
+            position: static;
+            display: inline-block;
+            margin-top: 18px;
+        }
+
+        .topbar {
+            align-items: flex-start;
+        }
+
+        .status {
+            display: none;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+        <div class="brand">
+            <div class="brand-icon">SF</div>
+            <div>
+                <h1>Syafiq Finance</h1>
+                <p>Personal Finance Dashboard</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span>●</span> Data tersimpan lokal
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-label">Total balance</div>
+        <h2 id="saldo">Rp0</h2>
+        <p class="hero-sub">Kelola uangmu dengan lebih teratur.</p>
+        <div class="hero-badge">Private dashboard</div>
+    </section>
+
+    <section class="stats">
+        <div class="stat">
+            <div class="stat-top">
+                <span>Uang masuk</span>
+                <span class="stat-icon">↗</span>
+            </div>
+            <div class="stat-value" id="totalMasuk">Rp0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span>Pengeluaran</span>
+                <span class="stat-icon">↘</span>
+            </div>
+            <div class="stat-value" id="totalKeluar">Rp0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-top">
+                <span>Transaksi</span>
+                <span class="stat-icon">#</span>
+            </div>
+            <div class="stat-value" id="jumlahTransaksi">0</div>
+        </div>
+    </section>
+
+    <section class="grid">
+
+        <div class="card">
+            <div class="card-title">
+                <h3>Tambah uang</h3>
+                <span>Income</span>
+            </div>
+
+            <input type="number" id="uangMasuk" placeholder="Jumlah uang">
+            <input type="text" id="keteranganMasuk" placeholder="Contoh: Uang jajan">
+
+            <button class="btn-primary" onclick="tambahUang()">+ Tambah uang</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <h3>Pengeluaran</h3>
+                <span>Expense</span>
+            </div>
+
+            <input type="number" id="uangKeluar" placeholder="Jumlah pengeluaran">
+            <input type="text" id="keteranganKeluar" placeholder="Contoh: Bensin">
+
+            <button onclick="kurangiUang()">− Catat pengeluaran</button>
+        </div>
+
+    </section>
+
+    <section class="card target-card">
+        <div class="card-title">
+            <h3>Target tabungan</h3>
+            <span>Saving goal</span>
+        </div>
+
+        <input type="text" id="namaTarget" placeholder="Contoh: Laptop baru">
+        <input type="text" id="ikonTarget" placeholder="Emoji, contoh: 💻" maxlength="4">
+        <input type="number" id="hargaTarget" placeholder="Harga target">
+
+        <button class="btn-primary" onclick="simpanTarget()">Simpan target</button>
+
+        <div id="targetInfo"></div>
+
+        <div class="progress-box">
+            <div id="progressBar"></div>
+        </div>
+
+        <p id="progressText">Belum ada target.</p>
+    </section>
+
+    <section class="grid">
+
+        <div class="card">
+            <div class="card-title">
+                <h3>Pengingat nabung</h3>
+                <span>Reminder</span>
+            </div>
+
+            <input type="date" id="tanggalPengingat">
+
+            <button onclick="simpanPengingat()">Simpan pengingat</button>
+
+            <p id="pengingatInfo" style="margin-top:12px;color:#7b8491;font-size:12px;"></p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <h3>Riwayat transaksi</h3>
+                <span id="transactionLabel">0 transaksi</span>
+            </div>
+
+            <ul id="riwayat" class="transaction-list"></ul>
+
+            <button class="btn-danger" onclick="hapusSemuaRiwayat()">
+                Hapus semua riwayat
+            </button>
+        </div>
+
+    </section>
+
+    <footer>
+        Syafiq Finance · Personal Finance Dashboard
+    </footer>
+
+</div>
+
+<script>
+let saldo = Number(localStorage.getItem("saldo")) || 0;
+
+let riwayat =
+    JSON.parse(localStorage.getItem("riwayat")) || [];
+
+let target =
+    JSON.parse(localStorage.getItem("target")) || null;
+
+let tanggalPengingat =
+    localStorage.getItem("tanggalPengingat") || "";
+
+function formatRupiah(angka) {
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0
+    }).format(angka);
+}
+
+function simpanData() {
+    localStorage.setItem("saldo", saldo);
+    localStorage.setItem("riwayat", JSON.stringify(riwayat));
+}
+
+function tampilkanSaldo() {
+    document.getElementById("saldo").innerHTML =
+        formatRupiah(saldo);
+}
+
+function updateStats() {
+    let masuk = 0;
+    let keluar = 0;
+
+    riwayat.forEach(function(t) {
+        if (t.tipe === "masuk") masuk += t.jumlah;
+        else keluar += t.jumlah;
+    });
+
+    document.getElementById("totalMasuk").innerHTML =
+        formatRupiah(masuk);
+
+    document.getElementById("totalKeluar").innerHTML =
+        formatRupiah(keluar);
+
+    document.getElementById("jumlahTransaksi").innerHTML =
+        riwayat.length;
+
+    document.getElementById("transactionLabel").innerHTML =
+        riwayat.length + " transaksi";
+}
+
+function tambahUang() {
+    let uang = Number(
+        document.getElementById("uangMasuk").value
+    );
+
+    let keterangan =
+        document.getElementById("keteranganMasuk").value;
+
+    if (uang <= 0) {
+        alert("Masukkan jumlah uang yang benar.");
+        return;
+    }
+
+    if (keterangan.trim() === "") {
+        keterangan = "Uang masuk";
+    }
+
+    saldo += uang;
+
+    riwayat.unshift({
+        tipe: "masuk",
+        jumlah: uang,
+        keterangan: keterangan,
+        waktu: new Date().toLocaleString("id-ID")
+    });
+
+    simpanData();
+    refresh();
+
+    document.getElementById("uangMasuk").value = "";
+    document.getElementById("keteranganMasuk").value = "";
+}
+
+function kurangiUang() {
+    let uang = Number(
+        document.getElementById("uangKeluar").value
+    );
+
+    let keterangan =
+        document.getElementById("keteranganKeluar").value;
+
+    if (uang <= 0) {
+        alert("Masukkan jumlah pengeluaran yang benar.");
+        return;
+    }
+
+    if (uang > saldo) {
+        alert("Saldo tidak cukup.");
+        return;
+    }
+
+    if (keterangan.trim() === "") {
+        keterangan = "Pengeluaran";
+    }
+
+    saldo -= uang;
+
+    riwayat.unshift({
+        tipe: "keluar",
+        jumlah: uang,
+        keterangan: keterangan,
+        waktu: new Date().toLocaleString("id-ID")
+    });
+
+    simpanData();
+    refresh();
+
+    document.getElementById("uangKeluar").value = "";
+    document.getElementById("keteranganKeluar").value = "";
+}
+
+function tampilkanRiwayat() {
+    let list = document.getElementById("riwayat");
+    list.innerHTML = "";
+
+    if (riwayat.length === 0) {
+        list.innerHTML =
+            '<li class="empty">Belum ada transaksi.</li>';
+        return;
+    }
+
+    riwayat.forEach(function(t) {
+        let item = document.createElement("li");
+
+        let masuk = t.tipe === "masuk";
+
+        item.innerHTML =
+            '<div class="transaction-icon">' +
+            (masuk ? "↗" : "↘") +
+            '</div>' +
+            '<div class="transaction-main">' +
+            '<strong>' + t.keterangan + '</strong>' +
+            '<small>' + t.waktu + '</small>' +
+            '</div>' +
+            '<div class="' +
+            (masuk ? "amount-in" : "amount-out") +
+            '">' +
+            (masuk ? "+" : "-") +
+            formatRupiah(t.jumlah) +
+            '</div>';
+
+        list.appendChild(item);
+    });
+}
+
+function hapusSemuaRiwayat() {
+    if (riwayat.length === 0) return;
+
+    if (!confirm("Hapus semua riwayat transaksi?")) return;
+
+    riwayat = [];
+    saldo = 0;
+
+    simpanData();
+    refresh();
+}
+
+function simpanTarget() {
+    let nama =
+        document.getElementById("namaTarget").value;
+
+    let ikon =
+        document.getElementById("ikonTarget").value;
+
+    let harga =
+        Number(document.getElementById("hargaTarget").value);
+
+    if (nama.trim() === "" || harga <= 0) {
+        alert("Isi nama target dan harga dengan benar.");
+        return;
+    }
+
+    if (ikon.trim() === "") ikon = "🎯";
+
+    target = {
+        nama: nama,
+        ikon: ikon,
+        harga: harga
+    };
+
+    localStorage.setItem("target", JSON.stringify(target));
+
+    updateTarget();
+
+    document.getElementById("namaTarget").value = "";
+    document.getElementById("ikonTarget").value = "";
+    document.getElementById("hargaTarget").value = "";
+}
+
+function updateTarget() {
+    let info = document.getElementById("targetInfo");
+    let progressBar = document.getElementById("progressBar");
+    let progressText = document.getElementById("progressText");
+
+    if (!target) {
+        info.innerHTML = "";
+        progressBar.style.width = "0%";
+        progressText.innerHTML = "Belum ada target.";
+        return;
+    }
+
+    let persen = (saldo / target.harga) * 100;
+    if (persen > 100) persen = 100;
+
+    info.innerHTML =
+        '<div class="target-preview">' +
+        '<div class="target-icon">' + target.ikon + '</div>' +
+        '<div><strong>' + target.nama + '</strong>' +
+        '<small>Target ' + formatRupiah(target.harga) + '</small></div>' +
+        '</div>';
+
+    progressBar.style.width = persen + "%";
+
+    if (saldo >= target.harga) {
+        progressText.innerHTML =
+            "🎉 Target tabungan tercapai!";
+    } else {
+        progressText.innerHTML =
+            Math.floor(persen) + "% tercapai · Kurang " +
+            formatRupiah(target.harga - saldo);
+    }
+}
+
+function simpanPengingat() {
+    let tanggal =
+        document.getElementById("tanggalPengingat").value;
+
+    if (tanggal === "") {
+        alert("Pilih tanggal terlebih dahulu.");
+        return;
+    }
+
+    tanggalPengingat = tanggal;
+
+    localStorage.setItem(
+        "tanggalPengingat",
+        tanggalPengingat
+    );
+
+    tampilkanPengingat();
+}
+
+function tampilkanPengingat() {
+    let info = document.getElementById("pengingatInfo");
+
+    if (tanggalPengingat === "") {
+        info.innerHTML = "Belum ada pengingat.";
+        return;
+    }
+
+    let sekarang = new Date();
+    let targetTanggal =
+        new Date(tanggalPengingat + "T00:00:00");
+
+    let selisih = Math.ceil(
+        (targetTanggal - sekarang) /
+        (1000 * 60 * 60 * 24)
+    );
+
+    if (selisih > 0) {
+        info.innerHTML =
+            "📌 Pengingat nabung dalam " +
+            selisih + " hari.";
+    } else if (selisih === 0) {
+        info.innerHTML =
+            "🔔 Hari ini waktunya nabung!";
+    } else {
+        info.innerHTML =
+            "⚠️ Pengingat ini sudah lewat.";
+    }
+}
+
+function refresh() {
+    tampilkanSaldo();
+    updateStats();
+    tampilkanRiwayat();
+    updateTarget();
+    tampilkanPengingat();
+}
+
+document.getElementById("tanggalPengingat").value =
+    tanggalPengingat;
+
+refresh();
+</script>
+
+</body>
+</html>

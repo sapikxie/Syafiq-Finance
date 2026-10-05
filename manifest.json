@@ -1,0 +1,10 @@
+{
+    "name": "Syafiq Finance",
+    "short_name": "Syafiq Finance",
+    "description": "Personal finance dashboard",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#f4f6f8",
+    "theme_color": "#171b2e",
+    "orientation": "portrait"
+}

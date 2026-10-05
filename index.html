@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Syafiq Finance</title>
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -27,8 +25,6 @@
             padding: 25px;
         }
 
-        /* HEADER */
-
         header {
             display: flex;
             justify-content: space-between;
@@ -47,10 +43,8 @@
 
         .status {
             font-size: 13px;
-            color: #555;
+            color: #777;
         }
-
-        /* HERO */
 
         .hero {
             background: linear-gradient(135deg, #171b2e, #342b63);
@@ -58,11 +52,11 @@
             padding: 35px;
             border-radius: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 35px rgba(0,0,0,.12);
         }
 
         .hero small {
-            color: #bfc3ff;
+            color: #c7c9ff;
         }
 
         .hero h1 {
@@ -75,8 +69,6 @@
             font-weight: bold;
             margin-top: 20px;
         }
-
-        /* BUTTON */
 
         .actions {
             display: grid;
@@ -109,12 +101,6 @@
             border: 1px solid #ddd;
         }
 
-        .action-button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* SECTION */
-
         h2 {
             font-size: 20px;
             margin-bottom: 15px;
@@ -123,8 +109,6 @@
         .section {
             margin-bottom: 30px;
         }
-
-        /* STAT */
 
         .stats {
             display: grid;
@@ -136,7 +120,7 @@
             background: white;
             padding: 20px;
             border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
         }
 
         .stat-card small {
@@ -157,13 +141,11 @@
             color: #d64545;
         }
 
-        /* MONTH */
-
         .month-card {
             background: white;
             padding: 22px;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
         }
 
         .month-header {
@@ -208,13 +190,11 @@
             font-size: 16px;
         }
 
-        /* SAVING */
-
         .saving-card {
             background: white;
             padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
         }
 
         .saving-top {
@@ -256,7 +236,7 @@
             height: 100%;
             width: 0%;
             background: #6c63ff;
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .saving-info {
@@ -264,8 +244,6 @@
             font-size: 14px;
             color: #666;
         }
-
-        /* HISTORY */
 
         .history {
             display: flex;
@@ -280,7 +258,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 5px 20px rgba(0,0,0,.04);
         }
 
         .transaction-left {
@@ -334,10 +312,6 @@
             font-size: 12px;
         }
 
-        .delete-button:hover {
-            color: #d64545;
-        }
-
         .empty {
             background: white;
             padding: 30px;
@@ -346,12 +320,10 @@
             color: #888;
         }
 
-        /* MODAL */
-
         .modal {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,.5);
             display: none;
             justify-content: center;
             align-items: center;
@@ -419,10 +391,7 @@
             padding: 30px 0 10px;
         }
 
-        /* MOBILE */
-
         @media (max-width: 700px) {
-
             .container {
                 padding: 15px;
             }
@@ -432,1256 +401,4 @@
             }
 
             .hero h1 {
-                font-size: 30px;
-            }
-
-            .balance {
-                font-size: 27px;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .month-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .actions {
-                grid-template-columns: 1fr;
-            }
-
-            .transaction {
-                align-items: flex-start;
-            }
-
-            .transaction-right {
-                margin-left: 10px;
-            }
-
-            .saving-input {
-                flex-direction: column;
-            }
-
-        }
-
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <header>
-
-        <div class="logo">
-            Syafiq <span>Finance</span>
-        </div>
-
-        <div class="status">
-            Personal Finance
-        </div>
-
-    </header>
-
-
-    <section class="hero">
-
-        <small>Total Saldo</small>
-
-        <div class="balance" id="totalSaldo">
-            Rp0
-        </div>
-
-    </section>
-
-
-    <div class="actions">
-
-        <button
-            class="action-button income-button"
-            onclick="bukaModal('income')">
-            + Tambah Saldo
-        </button>
-
-        <button
-            class="action-button expense-button"
-            onclick="bukaModal('expense')">
-            − Kurangi Saldo
-        </button>
-
-    </div>
-
-
-    <section class="section">
-
-        <h2>Ringkasan</h2>
-
-        <div class="stats">
-
-            <div class="stat-card">
-                <small>Total Pemasukan</small>
-                <strong
-                    id="totalPemasukan"
-                    class="green">
-                    Rp0
-                </strong>
-            </div>
-
-            <div class="stat-card">
-                <small>Total Pengeluaran</small>
-                <strong
-                    id="totalPengeluaran"
-                    class="red">
-                    Rp0
-                </strong>
-            </div>
-
-            <div class="stat-card">
-                <small>Jumlah Transaksi</small>
-                <strong id="jumlahTransaksi">
-                    0
-                </strong>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="section">
-
-        <h2>Laporan Bulanan</h2>
-
-        <div class="month-card">
-
-            <div class="month-header">
-
-                <button onclick="ubahBulan(-1)">
-                    ‹
-                </button>
-
-                <div
-                    class="month-name"
-                    id="bulanAktif">
-                    -
-                </div>
-
-                <button onclick="ubahBulan(1)">
-                    ›
-                </button>
-
-            </div>
-
-
-            <div class="month-stats">
-
-                <div class="month-box">
-
-                    <small>Pemasukan</small>
-
-                    <strong
-                        id="monthlyIncome"
-                        class="green">
-                        Rp0
-                    </strong>
-
-                </div>
-
-
-                <div class="month-box">
-
-                    <small>Pengeluaran</small>
-
-                    <strong
-                        id="monthlyExpense"
-                        class="red">
-                        Rp0
-                    </strong>
-
-                </div>
-
-
-                <div class="month-box">
-
-                    <small>Selisih</small>
-
-                    <strong id="monthlyBalance">
-                        Rp0
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="section">
-
-        <h2>Target Tabungan</h2>
-
-        <div class="saving-card">
-
-            <div class="saving-top">
-
-                <strong>
-                    Target
-                </strong>
-
-                <strong id="savingPercent">
-                    0%
-                </strong>
-
-            </div>
-
-
-            <div class="saving-input">
-
-                <input
-                    type="number"
-                    id="savingTarget"
-                    placeholder="Contoh: 5000000">
-
-                <button onclick="simpanTarget()">
-                    Simpan
-                </button>
-
-            </div>
-
-
-            <div class="progress">
-
-                <div
-                    class="progress-bar"
-                    id="progressBar">
-                </div>
-
-            </div>
-
-
-            <div
-                class="saving-info"
-                id="savingInfo">
-                Belum ada target tabungan.
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="section">
-
-        <h2>History Transaksi</h2>
-
-        <div
-            class="history"
-            id="history">
-
-        </div>
-
-    </section>
-
-
-    <footer>
-        Syafiq Finance • Personal Finance Dashboard
-    </footer>
-
-</div>
-
-
-<!-- MODAL -->
-
-<div
-    class="modal"
-    id="modal">
-
-    <div class="modal-box">
-
-        <h3 id="modalTitle">
-            Tambah Saldo
-        </h3>
-
-
-        <label for="amount">
-            Nominal
-        </label>
-
-        <input
-            type="number"
-            id="amount"
-            placeholder="Contoh: 100000">
-
-
-        <label for="description">
-            Keterangan
-        </label>
-
-        <input
-            type="text"
-            id="description"
-            placeholder="Contoh: Uang jajan">
-
-
-        <div class="modal-buttons">
-
-            <button
-                class="cancel-button"
-                onclick="tutupModal()">
-                Batal
-            </button>
-
-            <button
-                class="save-button"
-                onclick="simpanTransaksi()">
-                Simpan
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-    /* =========================
-       DATA
-    ========================= */
-
-    let transaksi = [];
-
-    let targetTabungan = 0;
-
-    let jenisTransaksi = "income";
-
-    let bulanAktif =
-        new Date(
-            new Date().getFullYear(),
-            new Date().getMonth(),
-            1
-        );
-
-
-    const namaBulan = [
-        "Januari",
-        "Februari",
-        "Maret",
-        "April",
-        "Mei",
-        "Juni",
-        "Juli",
-        "Agustus",
-        "September",
-        "Oktober",
-        "November",
-        "Desember"
-    ];
-
-
-    /* =========================
-       LOAD DATA
-    ========================= */
-
-    function loadData() {
-
-        try {
-
-            const data =
-                localStorage.getItem(
-                    "syafiqFinanceTransactions"
-                );
-
-            if (data) {
-
-                const parsed =
-                    JSON.parse(data);
-
-                if (Array.isArray(parsed)) {
-
-                    transaksi = parsed;
-
-                }
-
-            }
-
-        } catch (error) {
-
-            console.log(
-                "Data transaksi lama tidak bisa dibaca."
-            );
-
-            transaksi = [];
-
-        }
-
-
-        const target =
-            localStorage.getItem(
-                "syafiqFinanceTarget"
-            );
-
-        if (target) {
-
-            targetTabungan =
-                Number(target) || 0;
-
-        }
-
-    }
-
-
-    /* =========================
-       FORMAT RUPIAH
-    ========================= */
-
-    function rupiah(angka) {
-
-        return new Intl.NumberFormat(
-            "id-ID",
-            {
-                style: "currency",
-                currency: "IDR",
-                maximumFractionDigits: 0
-            }
-        ).format(angka);
-
-    }
-
-
-    /* =========================
-       MODAL
-    ========================= */
-
-    function bukaModal(jenis) {
-
-        jenisTransaksi = jenis;
-
-        const modal =
-            document.getElementById("modal");
-
-        const title =
-            document.getElementById("modalTitle");
-
-        const amount =
-            document.getElementById("amount");
-
-        const description =
-            document.getElementById("description");
-
-
-        if (jenis === "income") {
-
-            title.textContent =
-                "Tambah Saldo";
-
-        } else {
-
-            title.textContent =
-                "Kurangi Saldo";
-
-        }
-
-
-        amount.value = "";
-
-        description.value = "";
-
-        modal.classList.add("show");
-
-        amount.focus();
-
-    }
-
-
-    function tutupModal() {
-
-        document
-            .getElementById("modal")
-            .classList.remove("show");
-
-    }
-
-
-    /* =========================
-       HITUNG
-    ========================= */
-
-    function hitungIncome() {
-
-        return transaksi
-            .filter(
-                item =>
-                    item.type === "income"
-            )
-            .reduce(
-                (total, item) =>
-                    total + Number(item.amount),
-                0
-            );
-
-    }
-
-
-    function hitungExpense() {
-
-        return transaksi
-            .filter(
-                item =>
-                    item.type === "expense"
-            )
-            .reduce(
-                (total, item) =>
-                    total + Number(item.amount),
-                0
-            );
-
-    }
-
-
-    function hitungSaldo() {
-
-        return (
-            hitungIncome()
-            -
-            hitungExpense()
-        );
-
-    }
-
-
-    /* =========================
-       SIMPAN TRANSAKSI
-    ========================= */
-
-    function simpanTransaksi() {
-
-        const amountInput =
-            document.getElementById("amount");
-
-        const descriptionInput =
-            document.getElementById(
-                "description"
-            );
-
-
-        const amount =
-            Number(amountInput.value);
-
-        const description =
-            descriptionInput.value.trim();
-
-
-        if (
-            !Number.isFinite(amount)
-            ||
-            amount <= 0
-        ) {
-
-            alert(
-                "Masukkan nominal yang benar."
-            );
-
-            return;
-
-        }
-
-
-        if (description === "") {
-
-            alert(
-                "Masukkan keterangan transaksi."
-            );
-
-            return;
-
-        }
-
-
-        if (description.length > 80) {
-
-            alert(
-                "Keterangan terlalu panjang."
-            );
-
-            return;
-
-        }
-
-
-        if (
-            jenisTransaksi === "expense"
-            &&
-            amount > hitungSaldo()
-        ) {
-
-            alert(
-                "Saldo tidak mencukupi."
-            );
-
-            return;
-
-        }
-
-
-        const transaksiBaru = {
-
-            id:
-                Date.now(),
-
-            type:
-                jenisTransaksi,
-
-            amount:
-                amount,
-
-            description:
-                description,
-
-            date:
-                new Date().toISOString()
-
-        };
-
-
-        transaksi.unshift(
-            transaksiBaru
-        );
-
-
-        localStorage.setItem(
-            "syafiqFinanceTransactions",
-            JSON.stringify(transaksi)
-        );
-
-
-        tutupModal();
-
-        tampilkanData();
-
-    }
-
-
-    /* =========================
-       TAMPILKAN DATA
-    ========================= */
-
-    function tampilkanData() {
-
-        const income =
-            hitungIncome();
-
-        const expense =
-            hitungExpense();
-
-        const saldo =
-            income - expense;
-
-
-        document
-            .getElementById("totalSaldo")
-            .textContent =
-            rupiah(saldo);
-
-
-        document
-            .getElementById("totalPemasukan")
-            .textContent =
-            rupiah(income);
-
-
-        document
-            .getElementById("totalPengeluaran")
-            .textContent =
-            rupiah(expense);
-
-
-        document
-            .getElementById("jumlahTransaksi")
-            .textContent =
-            transaksi.length;
-
-
-        tampilkanLaporanBulanan();
-
-        tampilkanHistory();
-
-        tampilkanTabungan();
-
-    }
-
-
-    /* =========================
-       LAPORAN BULANAN
-    ========================= */
-
-    function ubahBulan(jumlah) {
-
-        bulanAktif =
-            new Date(
-                bulanAktif.getFullYear(),
-                bulanAktif.getMonth()
-                    + jumlah,
-                1
-            );
-
-
-        tampilkanLaporanBulanan();
-
-    }
-
-
-    function tampilkanLaporanBulanan() {
-
-        const tahun =
-            bulanAktif.getFullYear();
-
-        const bulan =
-            bulanAktif.getMonth();
-
-
-        document
-            .getElementById("bulanAktif")
-            .textContent =
-            namaBulan[bulan]
-            + " "
-            + tahun;
-
-
-        let pemasukan = 0;
-
-        let pengeluaran = 0;
-
-
-        transaksi.forEach(
-            function(item) {
-
-                const tanggal =
-                    new Date(item.date);
-
-                if (
-                    tanggal.getFullYear()
-                    === tahun
-                    &&
-                    tanggal.getMonth()
-                    === bulan
-                ) {
-
-                    if (
-                        item.type === "income"
-                    ) {
-
-                        pemasukan +=
-                            Number(item.amount);
-
-                    } else {
-
-                        pengeluaran +=
-                            Number(item.amount);
-
-                    }
-
-                }
-
-            }
-        );
-
-
-        const selisih =
-            pemasukan - pengeluaran;
-
-
-        document
-            .getElementById(
-                "monthlyIncome"
-            )
-            .textContent =
-            rupiah(pemasukan);
-
-
-        document
-            .getElementById(
-                "monthlyExpense"
-            )
-            .textContent =
-            rupiah(pengeluaran);
-
-
-        const monthlyBalance =
-            document.getElementById(
-                "monthlyBalance"
-            );
-
-
-        monthlyBalance.textContent =
-            rupiah(selisih);
-
-
-        if (selisih >= 0) {
-
-            monthlyBalance.className =
-                "green";
-
-        } else {
-
-            monthlyBalance.className =
-                "red";
-
-        }
-
-    }
-
-
-    /* =========================
-       HISTORY
-    ========================= */
-
-    function tampilkanHistory() {
-
-        const history =
-            document.getElementById(
-                "history"
-            );
-
-
-        if (transaksi.length === 0) {
-
-            history.innerHTML =
-                '<div class="empty">Belum ada transaksi.</div>';
-
-            return;
-
-        }
-
-
-        history.innerHTML = "";
-
-
-        transaksi.forEach(
-            function(item) {
-
-                const transaction =
-                    document.createElement(
-                        "div"
-                    );
-
-                transaction.className =
-                    "transaction";
-
-
-                const left =
-                    document.createElement(
-                        "div"
-                    );
-
-                left.className =
-                    "transaction-left";
-
-
-                const icon =
-                    document.createElement(
-                        "div"
-                    );
-
-                icon.className =
-                    "transaction-icon "
-                    +
-                    (
-                        item.type === "income"
-                        ?
-                        "income-icon"
-                        :
-                        "expense-icon"
-                    );
-
-
-                icon.textContent =
-                    item.type === "income"
-                    ?
-                    "+"
-                    :
-                    "−";
-
-
-                const info =
-                    document.createElement(
-                        "div"
-                    );
-
-                info.className =
-                    "transaction-info";
-
-
-                const title =
-                    document.createElement(
-                        "strong"
-                    );
-
-                title.textContent =
-                    item.description;
-
-
-                const date =
-                    document.createElement(
-                        "small"
-                    );
-
-                date.textContent =
-                    formatTanggal(
-                        item.date
-                    );
-
-
-                info.appendChild(title);
-
-                info.appendChild(date);
-
-
-                left.appendChild(icon);
-
-                left.appendChild(info);
-
-
-                const right =
-                    document.createElement(
-                        "div"
-                    );
-
-                right.className =
-                    "transaction-right";
-
-
-                const amount =
-                    document.createElement(
-                        "div"
-                    );
-
-                amount.className =
-                    "amount "
-                    +
-                    (
-                        item.type === "income"
-                        ?
-                        "green"
-                        :
-                        "red"
-                    );
-
-
-                amount.textContent =
-                    (
-                        item.type === "income"
-                        ?
-                        "+ "
-                        :
-                        "− "
-                    )
-                    +
-                    rupiah(
-                        item.amount
-                    );
-
-
-                const deleteButton =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                deleteButton.className =
-                    "delete-button";
-
-
-                deleteButton.textContent =
-                    "Hapus";
-
-
-                deleteButton.onclick =
-                    function() {
-
-                        hapusTransaksi(
-                            item.id
-                        );
-
-                    };
-
-
-                right.appendChild(
-                    amount
-                );
-
-                right.appendChild(
-                    deleteButton
-                );
-
-
-                transaction.appendChild(
-                    left
-                );
-
-                transaction.appendChild(
-                    right
-                );
-
-
-                history.appendChild(
-                    transaction
-                );
-
-            }
-        );
-
-    }
-
-
-    function formatTanggal(
-        tanggal
-    ) {
-
-        const date =
-            new Date(tanggal);
-
-
-        return date.toLocaleString(
-            "id-ID",
-            {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit"
-            }
-        );
-
-    }
-
-
-    /* =========================
-       HAPUS
-    ========================= */
-
-    function hapusTransaksi(id) {
-
-        const yakin =
-            confirm(
-                "Hapus transaksi ini?"
-            );
-
-
-        if (!yakin) {
-
-            return;
-
-        }
-
-
-        transaksi =
-            transaksi.filter(
-                item =>
-                    item.id !== id
-            );
-
-
-        localStorage.setItem(
-            "syafiqFinanceTransactions",
-            JSON.stringify(transaksi)
-        );
-
-
-        tampilkanData();
-
-    }
-
-
-    /* =========================
-       TABUNGAN
-    ========================= */
-
-    function simpanTarget() {
-
-        const input =
-            document.getElementById(
-                "savingTarget"
-            );
-
-
-        const target =
-            Number(input.value);
-
-
-        if (
-            !Number.isFinite(target)
-            ||
-            target <= 0
-        ) {
-
-            alert(
-                "Masukkan target tabungan yang benar."
-            );
-
-            return;
-
-        }
-
-
-        targetTabungan =
-            target;
-
-
-        localStorage.setItem(
-            "syafiqFinanceTarget",
-            targetTabungan
-        );
-
-
-        tampilkanTabungan();
-
-    }
-
-
-    function tampilkanTabungan() {
-
-        const percent =
-            document.getElementById(
-                "savingPercent"
-            );
-
-        const bar =
-            document.getElementById(
-                "progressBar"
-            );
-
-        const info =
-            document.getElementById(
-                "savingInfo"
-            );
-
-
-        if (
-            targetTabungan <= 0
-        ) {
-
-            percent.textContent =
-                "0%";
-
-            bar.style.width =
-                "0%";
-
-            info.textContent =
-                "Belum ada target tabungan.";
-
-            return;
-
-        }
-
-
-        const saldo =
-            hitungSaldo();
-
-
-        let percentage =
-            (
-                saldo
-                /
-                targetTabungan
-            )
-            *
-            100;
-
-
-        if (percentage < 0) {
-
-            percentage = 0;
-
-        }
-
-
-        if (percentage > 100) {
-
-            percentage = 100;
-
-        }
-
-
-        percent.textContent =
-            Math.round(
-                percentage
-            )
-            + "%";
-
-
-        bar.style.width =
-            percentage
-            + "%";
-
-
-        info.textContent =
-            rupiah(saldo)
-            +
-            " dari "
-            +
-            rupiah(targetTabungan);
-
-    }
-
-
-    /* =========================
-       MODAL CLICK
-    ========================= */
-
-    document
-        .getElementById("modal")
-        .addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    event.target === this
-                ) {
-
-                    tutupModal();
-
-                }
-
-            }
-        );
-
-
-    /* =========================
-       ENTER
-    ========================= */
-
-    document
-        .getElementById("description")
-        .addEventListener(
-            "keydown",
-            function(event) {
-
-                if (
-                    event.key === "Enter"
-                ) {
-
-                    simpanTransaksi();
-
-                }
-
-            }
-        );
-
-
-    /* =========================
-       START
-    ========================= */
-
-    loadData();
-
-    tampilkanData();
-
-</script>
-
-</body>
-</html>
+                font-size: 30px
